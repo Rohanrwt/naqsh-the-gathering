@@ -1,17 +1,9 @@
-import {
-  initNavigation,
-  initFormButton,
-  initScrollSpy,
-  initForm,
-} from "./handlers.js";
+console.log("main.js loaded");
 
-// Initialize all functionality
-function init() {
-  initNavigation();
-  initFormButton();
-  initScrollSpy();
-  initForm();
-}
+import { attachFormHandlers } from "./handlers.js";
+import { initObserver } from "./sectionsObserver.js";
 
-// Run on DOM ready
-init();
+document.addEventListener("DOMContentLoaded", () => {
+  attachFormHandlers();
+  initObserver();
+});

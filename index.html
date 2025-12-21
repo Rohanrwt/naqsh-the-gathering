@@ -55,17 +55,62 @@
 
     <!-- By default this contact form is hidden, user jab click karega 
      tab show hoga-->
-    <div class="form-wrapper" id="formWrapper">
-      <form class="contact-form">
-        <p class="form-message" id="formMessage"></p>
-        <input type="text" placeholder="Your Name" />
-        <input type="email" placeholder="Email" />
-        <input type="tel" placeholder="Phone Number" />
-        <textarea placeholder="Why do you want to join?"></textarea>
-        <button type="submit" id="submit">Submit</button>
+    <!-- Replace the existing form block with this (keeps your same sections) -->
+    <div class="form-wrapper" id="formWrapper" hidden>
+      <form id="contactForm" class="contact-form" novalidate>
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+
+        <div class="form-row">
+          <label for="name">Your Name <span aria-hidden="true">*</span></label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your Name"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="email">Email <span aria-hidden="true">*</span></label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="phone">Phone Number</label>
+          <input
+            id="phone"
+            name="phone"
+            type="tel"
+            placeholder="Phone Number"
+          />
+        </div>
+
+        <div class="form-row">
+          <label for="message"
+            >Why do you want to join? <span aria-hidden="true">*</span></label
+          >
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Why do you want to join?"
+            required
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit">Submit</button>
+          <button type="button" id="closeFormBtn">Close</button>
+        </div>
       </form>
     </div>
 
-    <script type="module" src="/src/js/main.js"></script>
+    <script type="module" src="src/js/main.js"></script>
   </body>
 </html>

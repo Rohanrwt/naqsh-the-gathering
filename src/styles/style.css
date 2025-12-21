@@ -213,10 +213,14 @@ body {
    ============================================ */
 
 .form-wrapper {
-  display: none;
+  display: flex;
   justify-content: center;
   padding: var(--gap-md) var(--space-lg);
   height: var(--min-height-section);
+}
+
+.form-wrapper[hidden] {
+  display: none;
 }
 
 .contact-form {
@@ -249,6 +253,11 @@ body {
 
 .form-message.success {
   color: var(--color-success);
+}
+
+/* Give each section a top offset equal/greater than the navbar height */
+section {
+  scroll-margin-top: 72px; /* adjust if your navbar height differs */
 }
 
 /* ============================================
