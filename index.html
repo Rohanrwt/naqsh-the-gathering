@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NAQSH | The Gathering</title>
+    <link rel="stylesheet" href="src/styles/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">NAQSH</div>
+      <ul class="nav-links">
+        <li data-target="hero">Hero</li>
+        <li data-target="belief">Belief</li>
+        <li data-target="gathering">Gatherings</li>
+        <li data-target="contact">Contact</li>
+      </ul>
+    </nav>
+    <!-- Nav bar is fixed, data - target tells ki konse 
+     section mein hai hum -->
+    <section class="hero" id="hero">
+      <h1>NAQSH | THE GATHERING</h1>
+      <p>A place to pause, connect and gather.</p>
+    </section>
+
+    <section class="belief" id="belief">
+      <p>
+        NAQSH is not a destination. <br />
+        It is a pause between journeys. <br /><br />
+
+        A place where people arrive without rushing, <br />
+        stay without performing, <br />
+        and leave with clarity.
+      </p>
+    </section>
+
+    <section class="gathering" id="gathering">
+      <h2>The Gathering</h2>
+      <p>
+        Small groups. <br />
+        Slow conversations. <br />
+        Shared silence. <br /><br />
+
+        No schedules. <br />
+        No pressure. <br />
+        Just presence.
+      </p>
+    </section>
+
+    <section class="cta" id="contact">
+      <h2>Join the Gathering</h2>
+      <p>If this resonates, leave your details.</p>
+      <button id="openFormBtn">Request Details</button>
+    </section>
+
+    <!-- By default this contact form is hidden, user jab click karega 
+     tab show hoga-->
+    <div class="form-wrapper" id="formWrapper">
+      <form class="contact-form">
+        <p class="form-message" id="formMessage"></p>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Email" />
+        <input type="tel" placeholder="Phone Number" />
+        <textarea placeholder="Why do you want to join?"></textarea>
+        <button type="submit" id="submit">Submit</button>
+      </form>
+    </div>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

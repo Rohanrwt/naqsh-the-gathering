@@ -1,0 +1,341 @@
+/* ============================================
+   CSS VARIABLES (Design System)
+   ============================================ */
+
+:root {
+  /* Colors */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f4f4f4;
+  --color-text-primary: #111111;
+  --color-text-secondary: #333333;
+  --color-text-tertiary: #444444;
+  --color-accent: #4f46e5;
+  --color-border: #000000;
+  --color-success: green;
+  --color-error: red;
+
+  /* Spacing */
+  --space-xs: 8px;
+  --space-sm: 10px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 30px;
+  --space-2xl: 40px;
+  --space-3xl: 60px;
+  --space-4xl: 80px;
+  --space-5xl: 100px;
+  --space-6xl: 120px;
+
+  /* Typography */
+  --font-size-sm: 14px;
+  --font-size-base: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 26px;
+  --font-size-3xl: 32px;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  --letter-spacing-sm: 1px;
+  --letter-spacing-md: 2px;
+  --letter-spacing-lg: 5px;
+
+  --line-height-base: 1.6;
+  --line-height-relaxed: 1.7;
+
+  /* Layout */
+  --radius: 10px;
+  --max-width-content: 700px;
+  --max-width-form: 400px;
+  --max-width-button: 240px;
+
+  --min-height-section: 80vh;
+  --min-height-hero: 100vh;
+
+  /* Borders */
+  --border-width-thin: 1px;
+  --border-width-thick: 2px;
+
+  /* Gaps */
+  --gap-sm: 15px;
+  --gap-md: 30px;
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: var(--color-bg-primary);
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md);
+  border-bottom: var(--border-width-thin) solid var(--color-border);
+}
+
+.logo {
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-lg);
+  font-size: var(--font-size-base);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: var(--gap-md);
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.nav-links li.active {
+  border-bottom: var(--border-width-thick) solid var(--color-border);
+}
+
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
+.hero {
+  min-height: var(--min-height-hero);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: var(--space-2xl);
+}
+
+.hero h1 {
+  font-size: var(--font-size-3xl);
+  letter-spacing: var(--letter-spacing-md);
+  margin-bottom: var(--space-lg);
+}
+
+.hero p {
+  font-size: var(--font-size-base);
+  color: var(--color-text-tertiary);
+}
+
+/* ============================================
+   BELIEF & GATHERING SECTIONS
+   ============================================ */
+
+.belief,
+.gathering {
+  padding: var(--space-5xl) var(--space-lg);
+  text-align: center;
+  max-width: var(--max-width-content);
+  margin: auto;
+  height: var(--min-height-section);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.belief p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: #222;
+}
+
+.gathering h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-lg);
+}
+
+.gathering p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text-secondary);
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta {
+  padding: var(--space-6xl) var(--space-lg);
+  text-align: center;
+  background: var(--color-bg-secondary);
+  height: var(--min-height-section);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cta h2 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-lg);
+}
+
+.cta p {
+  font-size: var(--font-size-base);
+  margin-bottom: 12px;
+}
+
+.cta button {
+  padding: 12px 28px;
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  border: var(--border-width-thin) solid var(--color-border);
+  background: transparent;
+}
+
+/* ============================================
+   CONTACT FORM
+   ============================================ */
+
+.form-wrapper {
+  display: none;
+  justify-content: center;
+  padding: var(--gap-md) var(--space-lg);
+  height: var(--min-height-section);
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  max-width: var(--max-width-form);
+  width: 100%;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.contact-form button {
+  padding: var(--space-sm);
+  cursor: pointer;
+}
+
+.form-message {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.form-message.error {
+  color: var(--color-error);
+}
+
+.form-message.success {
+  color: var(--color-success);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 12px;
+    gap: var(--gap-sm);
+  }
+
+  .logo {
+    font-size: var(--font-size-lg);
+  }
+
+  .nav-links {
+    gap: var(--gap-sm);
+    justify-content: center;
+  }
+
+  .nav-links li {
+    font-size: var(--font-size-lg);
+  }
+
+  /* Hero Section */
+  .hero {
+    padding: var(--space-4xl) var(--space-lg) var(--space-2xl);
+    min-height: var(--min-height-hero);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-2xl);
+    letter-spacing: var(--letter-spacing-sm);
+  }
+
+  .hero p {
+    font-size: var(--font-size-base);
+  }
+
+  /* Belief & Gathering Sections */
+  .belief,
+  .gathering {
+    padding: var(--space-3xl) var(--space-lg);
+    max-width: 100%;
+  }
+
+  .belief p,
+  .gathering p {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-relaxed);
+  }
+
+  /* CTA Section */
+  .cta {
+    padding: var(--space-4xl) var(--space-lg);
+  }
+
+  .cta h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  .cta p {
+    font-size: var(--font-size-lg);
+  }
+
+  .cta button {
+    padding: 12px var(--font-size-xl);
+    font-size: var(--font-size-base);
+    width: 100%;
+    max-width: var(--max-width-button);
+  }
+
+  /* Form */
+  .form-wrapper {
+    padding: var(--gap-md);
+    padding-top: var(--space-sm);
+  }
+
+  .contact-form {
+    max-width: 100%;
+    padding: var(--space-sm) var(--space-sm);
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: var(--font-size-lg);
+  }
+}
