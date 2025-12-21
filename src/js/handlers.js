@@ -1,93 +1,97 @@
-import {
-  navItems,
-  openFormBtn,
-  formWrapper,
-  sections,
-  form,
-  formMessage,
-} from "./dom.js";
-import { observerOptions } from "./utils.js";
+import { getFormElements } from "./dom.js";
+import { isValidEmail, showMessage, clearMessage } from "./utils.js";
 
-// Navigation click handler
-export function initNavigation() {
-  navItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      // Remove active class from all items
-      navItems.forEach((i) => i.classList.remove("active"));
+export function attachFormHandlers() {
+  const { openBtn, closeBtn, formWrapper, form, formMessage } =
+    getFormElements();
 
-      // Add active class to clicked item
-      item.classList.add("active");
+  console.log("attachFormHandlers started");
+  console.log(
+    "openBtn exists?",
+    !!openBtn,
+    "closeBtn?",
+    !!closeBtn,
+    "formWrapper?",
+    !!formWrapper,
+    "form?",
+    !!form
+  );
 
-      // Get target section and scroll to it
-      const targetId = item.getAttribute("data-target");
-      const targetSection = document.getElementById(targetId);
+  if (!form) {
+    console.warn("contactForm not found in DOM; attachFormHandlers skipped.");
+    return;
+  }
 
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "smooth" });
-      }
-    });
+  // DEBUG: show initial hidden value
+  console.log("initial formWrapper.hidden:", formWrapper.hidden);
+
+  // Open form
+  openBtn?.addEventListener("click", () => {
+    console.log("openBtn clicked");
+    console.log("before toggling, hidden:", formWrapper.hidden);
+    formWrapper.hidden = false;
+    console.log(
+      "after toggling, hidden:",
+      formWrapper.hidden,
+      " (form should be visible if CSS allows it)"
+    );
+
+    // focus the first input
+    if (form.name) form.name.focus();
   });
-}
 
-// Open form button handler
-export function initFormButton() {
-  openFormBtn.addEventListener("click", () => {
-    formWrapper.style.display = "flex";
-    formWrapper.scrollIntoView({ behavior: "smooth" });
+  // Close form
+  closeBtn?.addEventListener("click", () => {
+    console.log("closeBtn clicked");
+    formWrapper.hidden = true;
+    clearMessage(formMessage);
   });
-}
 
-// Intersection Observer for scroll spy
-export function initScrollSpy() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const sectionId = entry.target.id;
+  // Submit handler
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault(); // control the submit flow
+    clearMessage(formMessage);
 
-        // Remove active class from all nav items
-        navItems.forEach((item) => {
-          item.classList.remove("active");
-        });
+    const data = {
+      name: form.name?.value.trim() || "",
+      email: form.email?.value.trim() || "",
+      phone: form.phone?.value.trim() || "",
+      message: form.message?.value.trim() || "",
+    };
 
-        // Add active class to matching nav item
-        navItems.forEach((item) => {
-          if (item.getAttribute("data-target") === sectionId) {
-            item.classList.add("active");
-          }
-        });
-      }
-    });
-  }, observerOptions);
-
-  // Observe all sections
-  sections.forEach((section) => {
-    observer.observe(section);
-  });
-}
-
-// Form submit handler
-export function initForm() {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    // Get form values
-    const name = form.querySelector(`input[type='text']`).value.trim();
-    const email = form.querySelector(`input[type='email']`).value.trim();
-    const phone = form.querySelector(`input[type='tel']`).value.trim();
-    const message = form.querySelector(`textarea`).value.trim();
-
-    // Validation: check if all fields are filled
-    if (!name || !email || !phone || !message) {
-      formMessage.textContent = `Please fill all the fields.`;
-      formMessage.className = "form-message error";
+    // Client-side validation
+    if (!data.name) {
+      showMessage(formMessage, "Please enter your name.");
+      form.name?.focus();
+      return;
+    }
+    if (!data.email || !isValidEmail(data.email)) {
+      showMessage(formMessage, "Please enter a valid email address.");
+      form.email?.focus();
+      return;
+    }
+    if (!data.message) {
+      showMessage(formMessage, "Please write a short message.");
+      form.message?.focus();
       return;
     }
 
-    // Success message
-    formMessage.textContent = `Thank you! We will get back to you.`;
-    formMessage.className = "form-message success";
+    // Show sending state
+    showMessage(formMessage, "Sending…");
 
-    // Reset form
-    form.reset();
+    // For now: log payload so you can see it and confirm flow.
+    console.group("Contact form submission (demo)");
+    console.log(data);
+    console.groupEnd();
+
+    // Simulate an async success response from server for UX
+    setTimeout(() => {
+      showMessage(
+        formMessage,
+        "Thanks — your message has been received (demo)."
+      );
+      form.reset();
+      // Optionally close: formWrapper.hidden = true;
+    }, 600);
   });
 }
