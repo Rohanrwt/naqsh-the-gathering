@@ -1,3 +1,8 @@
+## What This Project Is (and Is Not)
+
+This is a learning-focused project built to strengthen fundamentals and system thinking.
+It is not a production application, and features are added deliberately as understanding improves.
+
 # NAQSH | The Gathering
 
 A full-stack web project inspired by a real hospitality space — focused on intentional gatherings, calm experiences, and clean system design.
