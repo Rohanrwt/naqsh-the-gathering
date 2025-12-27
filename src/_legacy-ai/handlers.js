@@ -1,5 +1,5 @@
-import { getFormElements } from "./dom.js";
-import { isValidEmail, showMessage, clearMessage } from "./utils.js";
+import { getFormElements } from "./dom1.js";
+import { isValidEmail, showMessage, clearMessage } from "../js/utils.js";
 
 export function attachFormHandlers() {
   const { openBtn, closeBtn, formWrapper, form, formMessage } =

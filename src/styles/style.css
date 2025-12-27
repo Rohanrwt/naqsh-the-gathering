@@ -3,6 +3,7 @@
    ============================================ */
 
 :root {
+  /* root: This is like a dictionary of reusable values.  */
   /* Colors */
   --color-bg-primary: #ffffff;
   --color-bg-secondary: #f4f4f4;
@@ -103,6 +104,8 @@ body {
 .nav-links {
   list-style: none;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   gap: var(--gap-md);
 }
 
@@ -214,6 +217,7 @@ body {
 
 .form-wrapper {
   display: flex;
+  align-items: center;
   justify-content: center;
   padding: var(--gap-md) var(--space-lg);
   height: var(--min-height-section);

@@ -75,3 +75,5 @@ This project is documented daily through a 100-day vlog series, focusing on:
 ## 🙋‍♂️ About Me
 
 I’m transitioning into software development and using this project to learn how real-world systems are built, maintained, and improved over time.
+
+![alt text](image.png)

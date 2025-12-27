@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Tells the Browser this is HTML5 -->
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,6 +8,8 @@
     <link rel="stylesheet" href="src/styles/style.css" />
   </head>
   <body>
+    <!-- Navbar: A fixed menu at the top with links to sections.  -->
+
     <nav class="navbar">
       <div class="logo">NAQSH</div>
       <ul class="nav-links">
@@ -16,8 +19,10 @@
         <li data-target="contact">Contact</li>
       </ul>
     </nav>
-    <!-- Nav bar is fixed, data - target tells ki konse 
-     section mein hai hum -->
+
+    <!-- The Body is divided into sections like chapters in a book. Hero, Belief,
+     Gathering, Contact -->
+
     <section class="hero" id="hero">
       <h1>NAQSH | THE GATHERING</h1>
       <p>A place to pause, connect and gather.</p>
@@ -53,9 +58,7 @@
       <button id="openFormBtn">Request Info.</button>
     </section>
 
-    <!-- By default this contact form is hidden, user jab click karega 
-     tab show hoga-->
-    <!-- Replace the existing form block with this (keeps your same sections) -->
+    <!-- Form: A hidden contact form that appears when you click "Request Info." -->
     <div class="form-wrapper" id="formWrapper" hidden>
       <form id="contactForm" class="contact-form" novalidate>
         <p class="form-message" id="formMessage" aria-live="polite"></p>
@@ -111,6 +114,7 @@
       </form>
     </div>
 
-    <script type="module" src="src/js/main.js"></script>
+    <!-- Script: Links to your JS at the bottm so it loads after the HTML. -->
+    <script type="module" src="src/js/app.js"></script>
   </body>
 </html>
