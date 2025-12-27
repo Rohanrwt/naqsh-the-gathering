@@ -1,3 +1,5 @@
+🔗 Live Demo: https://rohanrwt.github.io/naqsh-the-gathering/
+
 ## What This Project Is (and Is Not)
 
 This is a learning-focused project built to strengthen fundamentals and system thinking.
