@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Naqsh | Admin Dashboard</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 2rem;
+        background: #f4f4f4;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+      }
+      th,
+      td {
+        padding: 12px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background-color: #333;
+        color: white;
+      }
+      h1 {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Naqsh Gathering | Inquiries</h1>
+
+    <table id="contactsTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Message</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+
+      <script>
+        async function loadContacts() {
+          try {
+            // 1. Fetch the data from your Server
+            const response = await fetch("http://localhost:5000/api/contact");
+            const contacts = await response.json();
+
+            // 2. Select the table body
+            const tableBody = document.querySelector("#contactsTable tbody");
+
+            // 3. Loop through each contact and add a row
+            contacts.forEach((contact) => {
+              const row = document.createElement("tr");
+
+              // Format the date nicely
+              const date = new Date(contact.createdAt).toLocaleDateString();
+
+              row.innerHTML = `
+                        <td>${contact.name}</td>
+                        <td>${contact.email}</td>
+                        <td>${contact.phone}</td>
+                        <td>${contact.message}</td>
+                        <td>${date}</td>
+                    `;
+              tableBody.appendChild(row);
+            });
+          } catch (error) {
+            console.error("Error loading contacts:", error);
+            document.body.innerHTML += `<p style="color:red">Error loading data. Is the server running?</p>`;
+          }
+        }
+
+        // Run this function immediately when page loads
+        loadContacts();
+      </script>
+    </table>
+  </body>
+</html>
